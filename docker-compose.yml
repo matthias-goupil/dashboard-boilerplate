@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  next:
+    build:
+      context: ./next-app
+      dockerfile: Dockerfile
+    container_name: next-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./next-app:/app
+    environment:
+      - DATABASE_URL="postgresql://{POSTGRES_USER:-postgres}:{POSTGRES_PASSWORD:-password}@localhost:5432/{POSTGRES_DB:-mydatabase}?schema=public"
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    container_name: postgres-admin
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
