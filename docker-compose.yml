@@ -11,7 +11,7 @@ services:
     volumes:
       - ./next-app:/app
     environment:
-      - DATABASE_URL="postgresql://{POSTGRES_USER:-postgres}:{POSTGRES_PASSWORD:-password}@localhost:5432/{POSTGRES_DB:-mydatabase}?schema=public"
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-mydatabase}?schema=public
     depends_on:
       - db
     networks:
@@ -21,9 +21,9 @@ services:
     image: postgres:15-alpine
     container_name: postgres-db
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-mydatabase}
     ports:
       - "5432:5432"
     networks:
@@ -35,7 +35,7 @@ services:
     image: adminer
     container_name: postgres-admin
     environment:
-      ADMINER_DEFAULT_SERVER: postgres
+      ADMINER_DEFAULT_SERVER: db
     depends_on:
       - db
     ports:

@@ -73,9 +73,17 @@ POSTGRES_DB=mydatabase
 ### Start services
 ```bash
 docker-compose up -d
+
+## or
+
+make up
 ```
 
 ### Stop services
 ```bash
 docker-compose down
+
+## or
+
+make down
 ```
