@@ -2,23 +2,23 @@ import AdminLayout from "@/components/layouts/adminLayout";
 import { Card } from "@/components/ui/card";
 import React from "react";
 
-function DashboardPage() {
+function ClientsPage() {
   return (
     <AdminLayout
-      title="Dashboard"
+      title="Mes clients"
       breadcrumb={[
-        "Dashboard",
         {
-          label: "Home",
+          label: "Dashboard",
           href: "/dashboard",
         },
+        "Clients",
       ]}
     >
       <Card className="p-5 h-screen">
-        <p>Contenu de la page home</p>
+        <p>Contenu de la page des clients</p>
       </Card>
     </AdminLayout>
   );
 }
 
-export default DashboardPage;
+export default ClientsPage;

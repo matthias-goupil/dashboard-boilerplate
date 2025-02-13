@@ -1,24 +1,29 @@
 import AdminLayout from "@/components/layouts/adminLayout";
 import { Card } from "@/components/ui/card";
+import { Metadata } from "next";
 import React from "react";
 
-function DashboardPage() {
+export const metadata: Metadata = {
+  title: "Planning",
+};
+
+function PlanningPage() {
   return (
     <AdminLayout
-      title="Dashboard"
+      title="Planning"
       breadcrumb={[
-        "Dashboard",
         {
-          label: "Home",
+          label: "Dashboard",
           href: "/dashboard",
         },
+        "Planning",
       ]}
     >
       <Card className="p-5 h-screen">
-        <p>Contenu de la page home</p>
+        <p>Contenu de la page du planning</p>
       </Card>
     </AdminLayout>
   );
 }
 
-export default DashboardPage;
+export default PlanningPage;

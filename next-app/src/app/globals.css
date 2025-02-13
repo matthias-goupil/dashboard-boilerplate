@@ -30,6 +30,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -62,7 +63,42 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-title
+}
+
+h1 {
+  @apply text-4xl font-bold text-[#2B3674];
+}
+
+h2 {
+  @apply text-3xl font-semibold text-gray-700;
+}
+
+h3 {
+  @apply text-2xl font-medium text-gray-600;
+}
+
+h4 {
+  @apply text-xl text-gray-600;
+}
+
+h5,
+h6 {
+  @apply text-lg text-gray-500;
+}
+
+* {
+  @apply font-content
 }
