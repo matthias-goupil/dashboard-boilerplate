@@ -30,11 +30,13 @@ export async function getSession() {
   const session = await db.query.sessions.findFirst({
     where: eq(sessions.sessionToken, cookie.value),
     with: {
-      user: true
-    }
+      user: true,
+    },
   });
 
-  if (!session || new Date(session.expires) < new Date()) {
+  if (!session) return null;
+  if (new Date(session.expires) < new Date()) {
+    await db.delete(sessions).where(eq(sessions.sessionToken, cookie.value));
     return null;
   }
 

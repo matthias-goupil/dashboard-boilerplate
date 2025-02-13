@@ -14,9 +14,15 @@ function page() {
         "Company",
       ]}
     >
-      <Card className="p-5 h-screen">
-        <p>Contenu de la page de l'entreprise</p>
-      </Card>
+      <div className="w-full bg-white flex flex-col h-screen gap-4">
+        <div className="bg-red-200 h-96 w-full">
+
+        </div>
+
+        <div className="bg-green-200 flex-1 w-full">
+
+        </div>
+      </div>
     </AdminLayout>
   );
 }

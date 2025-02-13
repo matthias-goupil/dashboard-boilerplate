@@ -46,7 +46,7 @@ export function SidebarMenu({ children }: ISidebarMenuProps) {
         </p>
       </div>
       <MenuContext.Provider value={extended}>
-        <nav className={"mt-9 overflow-hidden"}>
+        <nav className={"py-9 overflow-hidden"}>
           <ul className="flex flex-col items-start gap-4 px-4 w-full">
             {children}
           </ul>

@@ -8,7 +8,7 @@ import { z } from "zod";
 import { zodSigninSchema } from "@/zod/auth";
 
 import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
+import { Form, FormMessage } from "@/components/ui/form";
 import { signin } from "@/actions/auth";
 import { redirect } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
@@ -62,6 +62,10 @@ function SigninForm() {
           placeholder="Mot de passe"
           type="password"
         />
+
+        {form.formState.errors.root?.message && (
+          <FormMessage>{form.formState.errors.root?.message}</FormMessage>
+        )}
 
         <Button type="submit">Se connecter</Button>
       </form>

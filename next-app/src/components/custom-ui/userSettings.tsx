@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import {
@@ -13,6 +13,7 @@ import {
 } from "../ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { signout } from "@/actions/auth";
+import Link from "next/link";
 
 interface IUserSettingsProps {
   name: string;
@@ -58,9 +59,11 @@ function UserSettings({ name, email, picture }: IUserSettingsProps) {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={(async () => {
-            await signout()
-        })}>
+        <DropdownMenuItem
+          onClick={async () => {
+            await signout();
+          }}
+        >
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>

@@ -6,9 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-
 import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
+import { Form, FormMessage } from "@/components/ui/form";
 import { signup } from "@/actions/auth";
 import { redirect } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
@@ -78,6 +77,10 @@ function SigninForm() {
           type="password"
           required
         />
+
+        {form.formState.errors.root?.message && (
+          <FormMessage>{form.formState.errors.root?.message}</FormMessage>
+        )}
 
         <Button type="submit">S'inscrire</Button>
       </form>

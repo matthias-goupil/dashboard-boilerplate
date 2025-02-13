@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Inter, Lato, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -25,8 +26,7 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-inter",
-
-})
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -40,8 +40,10 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${DMSans.variable} ${lato.variable} ${inter.variable} antialiased bg-[#F4F7FE]`}>
-        {children}
+      <body
+        className={`${DMSans.variable} ${lato.variable} ${inter.variable} antialiased bg-[#F4F7FE]`}
+      >
+        <NuqsAdapter>{children}</NuqsAdapter>
         <Toaster />
       </body>
     </html>
