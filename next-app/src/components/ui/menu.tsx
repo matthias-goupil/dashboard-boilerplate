@@ -46,8 +46,10 @@ export function SidebarMenu({ children }: ISidebarMenuProps) {
         </p>
       </div>
       <MenuContext.Provider value={extended}>
-        <nav className={cn("mt-9 overflow-hidden ")}>
-          <ul className="flex flex-col gap-5">{children}</ul>
+        <nav className={"mt-9 overflow-hidden"}>
+          <ul className="flex flex-col items-start gap-4 px-4 w-full">
+            {children}
+          </ul>
         </nav>
       </MenuContext.Provider>
     </div>
@@ -70,15 +72,20 @@ export function MenuItem({ label, href, icon, selectedIcon }: IMenuItemProps) {
   return (
     <li
       className={cn(
-        "relative font-medium text-lg text-[#A3AED0]",
-        "before:content-[''] before:block before:absolute before:left-0 before:bg-blue-800 before:rounded-r-xl before:w-1.5 before:h-full before:transition-all",
+        "font-medium text-lg text-[#A3AED0] relative",
+        "before:content-[''] before:block before:absolute before:left-[-1rem] before:bg-blue-800 before:rounded-r-xl before:w-1.5 before:h-full before:transition-all",
         selected
           ? "text-[#2B3674] before:translate-x-0"
-          : "before:translate-x-[-0.5rem]"
+          : "before:translate-x-[-1rem]",
+        extended ? "w-full " : "w-fit"
       )}
     >
       <Link
-        className={cn("w-full h-16 flex items-center gap-3 px-8 ")}
+        className={cn(
+          "w-full flex items-center gap-3 p-4 rounded-md justify-start",
+          !extended && "justify-center",
+          !selected && "hover:bg-slate-50"
+        )}
         href={href}
       >
         <span className="w-8">
