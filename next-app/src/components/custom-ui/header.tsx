@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { Suspense, useContext } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,6 +14,8 @@ import { Button } from "../ui/button";
 import UserSettings from "./userSettings";
 import Link from "next/link";
 import { UserContext } from "../providers/userProvider";
+import LocaleSwitcher from "./localeSwitcher";
+import { BellIcon } from "@heroicons/react/24/outline";
 
 interface IHeaderProps {
   title: string;
@@ -60,9 +62,12 @@ function Header({ title, breadcrumb }: IHeaderProps) {
         <h1>{title}</h1>
       </div>
       <div className="p-2 w-fit h-fit flex items-center gap-5 bg-white rounded-full">
-        <Button size="icon" variant="rounded">
-          <Bell className="w-8" />
-        </Button>
+        {/* <Button size="icon" variant="rounded">
+          <BellIcon />
+        </Button> */}
+        <Suspense>
+          <LocaleSwitcher />
+        </Suspense>
         {user && (
           <UserSettings
             name={user.name}

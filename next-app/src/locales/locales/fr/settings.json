@@ -1,0 +1,9 @@
+{
+  "pageTitle": "Paramètres",
+  "tabs": {
+    "settings": "Paramètres",
+    "userInformations": "Informations utilisateur",
+    "password": "Mot de passe",
+    "subscription": "Abonnement"
+  }
+}

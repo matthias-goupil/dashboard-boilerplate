@@ -1,6 +1,14 @@
 "use client";
 
-import React, { PropsWithChildren, ReactNode } from "react";
+import React, {
+  CSSProperties,
+  PropsWithChildren,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useQueryState } from "nuqs";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
@@ -15,7 +23,7 @@ function QueryTabs({ queryName, tabs, defaultValue }: IQueryTabsProps) {
 
   return (
     <Tabs value={tab || "global"} onValueChange={setTab}>
-      <TabsList className="mb-5">
+      <TabsList className="mb-5 relative">
         {tabs.map(({ value, label }) => (
           <TabsTrigger value={value} key={value}>
             {label}
