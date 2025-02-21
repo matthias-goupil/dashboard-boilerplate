@@ -1,4 +1,4 @@
-import AdminLayout from "@/components/layouts/adminLayout";
+import DashboardLayout from "@/components/layouts/dashboardLayout";
 import { Card } from "@/components/ui/card";
 import { getScopedI18n } from "@/locales/server";
 import { Metadata } from "next";
@@ -16,7 +16,7 @@ async function PlanningPage(props: IPlanningPageProps) {
   const t = await getScopedI18n("planning");
   const tGlobal = await getScopedI18n("global");
   return (
-    <AdminLayout
+    <DashboardLayout
       title={t("pageTitle")}
       breadcrumb={[
         {
@@ -28,7 +28,7 @@ async function PlanningPage(props: IPlanningPageProps) {
     >
       <Card className="p-5 h-screen">
       </Card>
-    </AdminLayout>
+    </DashboardLayout>
   );
 }
 

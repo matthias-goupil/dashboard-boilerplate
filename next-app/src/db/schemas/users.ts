@@ -1,14 +1,21 @@
 import { relations } from "drizzle-orm";
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import {sessions} from "./sessions";
+import { accounts } from "./accounts";
 
 export const users = pgTable("users", {
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  name: varchar({ length: 255 }).notNull(),
-  email: varchar({ length: 255 }).notNull().unique(),
-  hashedPassword: varchar({ length: 255 }).notNull(),
+  id: uuid("id").primaryKey().defaultRandom(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  hashedPassword: text("hashed_password"), // Nullable pour OAuth
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
-
 export const userRelations = relations(users, ({ many }) => ({
-  sessions: many(sessions),
+  sessions: many(sessions, {
+    relationName: "user_sessions"
+  }),
+  accounts: many(accounts, {
+    relationName: "user_accounts"
+  })
 }));

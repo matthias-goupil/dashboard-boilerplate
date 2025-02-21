@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useContext } from "react";
+import React, { Suspense } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,22 +9,22 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../ui/breadcrumb";
-import { Bell } from "lucide-react";
-import { Button } from "../ui/button";
-import UserSettings from "./userSettings";
+import UserSettings from "./userDropdown";
 import Link from "next/link";
-import { UserContext } from "../providers/userProvider";
 import LocaleSwitcher from "./localeSwitcher";
-import { BellIcon } from "@heroicons/react/24/outline";
+import { users } from "@/db/schemas";
+import { Skeleton } from "../ui/skeleton";
 
 interface IHeaderProps {
   title: string;
+  user: {
+    email: typeof users.$inferSelect.email;
+    name: typeof users.$inferSelect.name;
+  };
   breadcrumb?: ({ label: string; href?: string } | string)[];
 }
 
-function Header({ title, breadcrumb }: IHeaderProps) {
-  const user = useContext(UserContext);
-
+function Header({ title, breadcrumb, user}: IHeaderProps) {
   return (
     <header className="flex items-center justify-between w-full mb-10 h-32 sticky top-0 backdrop-blur-xl ">
       <div className="space-y-1">
@@ -62,19 +62,13 @@ function Header({ title, breadcrumb }: IHeaderProps) {
         <h1>{title}</h1>
       </div>
       <div className="p-2 w-fit h-fit flex items-center gap-5 bg-white rounded-full">
-        {/* <Button size="icon" variant="rounded">
-          <BellIcon />
-        </Button> */}
-        <Suspense>
+        <Suspense fallback={<Skeleton className="h-14 w-14 rounded-full" />}>
           <LocaleSwitcher />
         </Suspense>
-        {user && (
-          <UserSettings
-            name={user.name}
-            email={user.email}
-            picture="https://avatars.githubusercontent.com/u/31575276?v=4"
-          />
-        )}
+        <UserSettings
+          {...user}
+          picture="https://avatars.githubusercontent.com/u/31575276?v=4"
+        />
       </div>
     </header>
   );

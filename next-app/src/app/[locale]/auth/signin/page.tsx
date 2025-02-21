@@ -1,13 +1,26 @@
 import SigninForm from "@/components/forms/auth/signinForm";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import GoogleOAuthButton from "@/components/ui/googleOAuthButton";
+import TextSeparator from "@/components/ui/textSeparator";
 import React from "react";
 
 function SigninPage() {
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
-      <h2 className="text-xl font-bold mb-4">Connexion</h2>
-      <div className="max-w-md mx-auto w-[400]">
-        <SigninForm />
-      </div>
+      <Card className="w-[400] p-4">
+        <CardHeader className="items-center">
+          <CardTitle>
+            <h2 className="text-xl font-bold mb-4">Connexion</h2>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          
+          <SigninForm />
+          <TextSeparator text="OU"/>
+          <GoogleOAuthButton />
+        </CardContent>
+      </Card>
     </div>
   );
 }

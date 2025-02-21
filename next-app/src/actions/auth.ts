@@ -1,8 +1,8 @@
 "use server";
 
+import { destroyJWT } from "@/lib/jwt";
 import { actionClient } from "@/lib/safe-action";
 import { signinWithCredentials, signupWithCredentials } from "@/services/auth";
-import { destroySession } from "@/services/sessions";
 import { zodSigninSchema, zodSignupSchema } from "@/zod/auth";
 import { redirect } from "next/navigation";
 
@@ -33,6 +33,6 @@ export const signup = actionClient
   });
 
 export async function signout() {
-  await destroySession();
+  await destroyJWT();
   redirect("/");
 }

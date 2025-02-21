@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import {
   DropdownMenu,
@@ -8,20 +6,18 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { signout } from "@/actions/auth";
-import Link from "next/link";
 
 interface IUserSettingsProps {
   name: string;
+  picture: string;
   email: string;
-  picture?: string;
 }
 
-function UserSettings({ name, email, picture }: IUserSettingsProps) {
+function UserSettings({ name, picture, email }: IUserSettingsProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -45,27 +41,17 @@ function UserSettings({ name, email, picture }: IUserSettingsProps) {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            Profile
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Settings
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Keyboard shortcuts
-            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-          </DropdownMenuItem>
+          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem>Keyboard shortcuts</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onClick={async () => {
-            await signout();
-          }}
-        >
-          Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        <DropdownMenuItem>
+          <form className="w-full" action={signout}>
+            <button className="w-full text-left" type="submit">
+              Log out
+            </button>
+          </form>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -1,4 +1,4 @@
-import AdminLayout from "@/components/layouts/adminLayout";
+import DashboardLayout from "@/components/layouts/dashboardLayout";
 import { getScopedI18n } from "@/locales/server";
 import React from "react";
 
@@ -11,7 +11,7 @@ async function CompanyPage(props: ICompanyPageProps) {
   const t = await getScopedI18n("company");
 
   return (
-    <AdminLayout
+    <DashboardLayout
       title={t("pageTitle")}
       breadcrumb={[
         {
@@ -20,7 +20,7 @@ async function CompanyPage(props: ICompanyPageProps) {
         },
         t("pageTitle"),
       ]}
-    ></AdminLayout>
+    ></DashboardLayout>
   );
 }
 

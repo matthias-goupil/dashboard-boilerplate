@@ -1,6 +1,6 @@
 import QueryTabs from "@/components/custom-ui/queryTabs";
 import UpdatePasswordForm from "@/components/forms/users/admin/updatePasswordForm";
-import AdminLayout from "@/components/layouts/adminLayout";
+import DashboardLayout from "@/components/layouts/dashboardLayout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getScopedI18n } from "@/locales/server";
@@ -16,7 +16,7 @@ async function SettingsPage(props: ISettingsPageProps) {
   const tGlobal = await getScopedI18n("global");
 
   return (
-    <AdminLayout
+    <DashboardLayout
       title={t("pageTitle")}
       breadcrumb={[
         {
@@ -92,7 +92,7 @@ async function SettingsPage(props: ISettingsPageProps) {
         ]}
         defaultValue="general"
       ></QueryTabs>
-    </AdminLayout>
+    </DashboardLayout>
   );
 }
 

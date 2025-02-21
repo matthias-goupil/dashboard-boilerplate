@@ -1,4 +1,4 @@
-import AdminLayout from "@/components/layouts/adminLayout";
+import DashboardLayout from "@/components/layouts/dashboardLayout";
 import { Card } from "@/components/ui/card";
 import { getScopedI18n } from "@/locales/server";
 import React from "react";
@@ -12,7 +12,7 @@ async function ServicesPage(props: IServicesPageProps) {
   const tGlobal = await getScopedI18n("global");
 
   return (
-    <AdminLayout
+    <DashboardLayout
       title={t("pageTitle")}
       breadcrumb={[
         {
@@ -23,7 +23,7 @@ async function ServicesPage(props: IServicesPageProps) {
       ]}
     >
       <Card className="p-5 h-screen"></Card>
-    </AdminLayout>
+    </DashboardLayout>
   );
 }
 

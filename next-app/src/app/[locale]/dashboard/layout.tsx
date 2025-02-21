@@ -2,19 +2,19 @@ import { SidebarMenu } from "@/components/ui/menu";
 import React, { PropsWithChildren } from "react";
 import {
   HomeIcon as HomeIconSolid,
-  BuildingOfficeIcon as BuildingOfficeIconSolid,
   BanknotesIcon as BanknotesIconSolid,
   Cog6ToothIcon as Cog6ToothIconSolid,
   UsersIcon as UsersIconSolid,
   CalendarIcon as CalendarIconSolid,
+  BuildingStorefrontIcon as BuildingStorefrontIconSolid
 } from "@heroicons/react/24/solid";
 import {
   HomeIcon,
-  BuildingOfficeIcon,
   BanknotesIcon,
   Cog6ToothIcon,
   UsersIcon,
   CalendarIcon,
+  BuildingStorefrontIcon,
 } from "@heroicons/react/24/outline";
 
 interface IDashboardLayoutProps extends PropsWithChildren {
@@ -34,8 +34,8 @@ async function DashboardLayout(props: IDashboardLayoutProps) {
     },
     {
       label: "company",
-      icon: <BuildingOfficeIcon className="w-8" />,
-      selectedIcon: <BuildingOfficeIconSolid className="w-8" />,
+      icon: <BuildingStorefrontIcon className="w-8" />,
+      selectedIcon: <BuildingStorefrontIconSolid className="w-8" />,
       href: `/${locale}/dashboard/companies`,
     },
     {

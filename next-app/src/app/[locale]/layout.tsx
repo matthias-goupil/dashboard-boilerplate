@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Inter, Lato, Work_Sans } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { I18nProviderClient } from "@/locales/client";

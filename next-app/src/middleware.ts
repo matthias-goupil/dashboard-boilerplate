@@ -1,10 +1,21 @@
 import { createI18nMiddleware } from "next-international/middleware";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { i18nMiddlewareConfig } from "./locales/config";
+import { getJWT } from "./lib/jwt";
 
 const I18nMiddleware = createI18nMiddleware(i18nMiddlewareConfig);
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
+  const userId = await getJWT();
+  if (!userId) {
+    if (request.url.includes("/dashboard")) {
+      return NextResponse.redirect("http://localhost:3000/auth/signin");
+    }
+  } else {
+    if (request.url.includes("/auth/")) {
+      return NextResponse.redirect("http://localhost:3000/dashboard");
+    }
+  }
   return I18nMiddleware(request);
 }
 
