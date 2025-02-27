@@ -51,7 +51,8 @@ export async function GET(req: Request) {
       "google",
       userData.id,
       userData.email,
-      userData.name
+      userData.name,
+      userData.picture
     );
 
     if (data) {
@@ -68,6 +69,7 @@ export async function GET(req: Request) {
     }
     throw new Error();
   } catch (error) {
+    console.log(error)
     return NextResponse.json(
       { error: "Authentication failed" },
       { status: 500 }

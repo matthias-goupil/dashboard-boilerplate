@@ -20,6 +20,7 @@ interface IHeaderProps {
   user: {
     email: typeof users.$inferSelect.email;
     name: typeof users.$inferSelect.name;
+    picture:  typeof users.$inferSelect.picture
   };
   breadcrumb?: ({ label: string; href?: string } | string)[];
 }
@@ -67,7 +68,6 @@ function Header({ title, breadcrumb, user}: IHeaderProps) {
         </Suspense>
         <UserSettings
           {...user}
-          picture="https://avatars.githubusercontent.com/u/31575276?v=4"
         />
       </div>
     </header>
