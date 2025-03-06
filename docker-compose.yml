@@ -47,6 +47,7 @@ services:
     depends_on:
       - db
       - minio
+      - adminer
     command: ["npm", "run", "dev"]
     networks:
       - app-network

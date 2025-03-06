@@ -1,4 +1,4 @@
-# Next.js Boilerplate with PostgreSQL, Nginx & Docker
+# Next.js Boilerplate with PostgreSQL, Minio & Docker
 
 ## 🚀 Description
 This project is a complete Next.js boilerplate designed to accelerate the development of modern web applications. It includes:
@@ -15,7 +15,9 @@ This project is a complete Next.js boilerplate designed to accelerate the develo
 
 - **Frontend & API Rest**: Next.js, TypeScript, Tailwind CSS
 - **Database**: PostgreSQL with Adminer for administration
+- **Image Server**: Minio
 - **Deployment**: Docker & Docker Compose
+
 
 ## 📂 Project Structure
 
