@@ -3,11 +3,7 @@ import { Card } from "@/components/ui/card";
 import { getScopedI18n } from "@/locales/server";
 import React from "react";
 
-interface IClientsPageProps {
-  params: Promise<{}>;
-}
-
-async function ClientsPage(props: IClientsPageProps) {
+async function ClientsPage() {
   const t = await getScopedI18n("customers");
   const tGlobal = await getScopedI18n("global");
 

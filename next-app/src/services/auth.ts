@@ -24,7 +24,7 @@ export async function signupWithCredentials(
       .returning({ name: users.name, email: users.email });
 
     return newUser;
-  } catch (e) {
+  } catch {
     throw new Error("User already exist");
   }
 }

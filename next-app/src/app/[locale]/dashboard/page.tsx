@@ -3,11 +3,7 @@ import { Card } from "@/components/ui/card";
 import { getScopedI18n } from "@/locales/server";
 import React from "react";
 
-interface IDashboardPageProps {
-  params: Promise<{}>;
-}
-
-async function DashboardPage(props: IDashboardPageProps) {
+async function DashboardPage() {
   const t = await getScopedI18n("dashboard");
 
   return (

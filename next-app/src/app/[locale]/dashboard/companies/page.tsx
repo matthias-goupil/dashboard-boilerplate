@@ -2,11 +2,7 @@ import DashboardLayout from "@/components/layouts/dashboardLayout";
 import { getScopedI18n } from "@/locales/server";
 import React from "react";
 
-interface ICompanyPageProps {
-  params: Promise<{ locale: string }>;
-}
-
-async function CompanyPage(props: ICompanyPageProps) {
+async function CompanyPage() {
   const tGlobal = await getScopedI18n("global");
   const t = await getScopedI18n("company");
 

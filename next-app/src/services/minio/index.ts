@@ -58,7 +58,7 @@ export async function getImage(key: string) {
 
     // Si le body existe, on renvoie l'image sous forme de stream
     if (Body instanceof Readable) {
-      const chunks: any[] = [];
+      const chunks: Buffer[] = [];
       for await (const chunk of Body) {
         chunks.push(chunk);
       }

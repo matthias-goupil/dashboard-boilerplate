@@ -82,7 +82,7 @@ function SigninForm() {
           <FormMessage>{form.formState.errors.root?.message}</FormMessage>
         )}
 
-        <Button variant="form" type="submit">S'inscrire</Button>
+        <Button variant="form" type="submit">S&apos;inscrire</Button>
       </form>
     </Form>
   );

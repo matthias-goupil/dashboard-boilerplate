@@ -1,7 +1,7 @@
 import { db } from "@/db/db";
 import { users } from "@/db/schemas/users";
 import { checkPassword, hashPassword } from "@/lib/hash";
-import { and, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 
 export async function getUsers() {
   return await db.query.users.findMany();
@@ -34,7 +34,7 @@ export async function updateUserPassword(
         .set({ hashedPassword })
         .where(eq(users.id, user.id))
     ).length;
-  } catch (e) {
+  } catch {
     throw new Error("Une erreur est survenue");
   }
 }

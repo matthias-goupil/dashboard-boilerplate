@@ -47,6 +47,8 @@ Your application will be accessible at:
 - **Frontend**: `http://localhost:3000`
 - **Rest API**: `http://localhost:3000/api`
 - **Postgres Admin**: `http://localhost:8080`
+- **Minio interface**: `http://localhost:9001`
+- **Minio api**: `http://localhost:9000`
 
 ### 3️⃣ Environment Variables
 
@@ -55,17 +57,28 @@ Create a `.env` file and add the necessary variables:
 ```
 ## DATABASE
 
+## DATABASE
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=password
 POSTGRES_DB=mydatabase
+
+## NEXT
+GOOGLE_CLIENT_ID= // TO COMPLETE
+GOOGLE_REDIRECT_URI=http://localhost:3000/api/auth/callback/google
+GOOGLE_CLIENT_SECRET= // TO COMPLETE
+NEXTAUTH_SECRET= // TO COMPLETE
+
+## MINIO
+MINIO_ROOT_USER=admin
+MINIO_ROOT_PASSWORD=password
 ```
 
 ## 🛠 Features
 
-- [x] Secure authentication with **NextAuth.js** (Email/Password & OAuth)
-- [x] **Internationalization** with `next-i18next`
+- [x] Secure authentication with Email/Password & OAuth
+- [x] **Internationalization** with `next-international`
 - [x] **Dashboard** with user management
-- [x] **Component library** for a consistent UI
+- [x] **Component library** for a consistent UI (shadcn/ui)
 - [x] **Drizzle ORM** for database management
 
 ## 📜 Useful Commands
@@ -86,4 +99,9 @@ docker-compose down
 ## or
 
 make down
+```
+
+### Commands help
+```bash
+make
 ```

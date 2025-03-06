@@ -1,15 +1,10 @@
+import React from "react";
 import type { Metadata } from "next";
-import { DM_Sans, Inter, Lato, Work_Sans } from "next/font/google";
+import { DM_Sans, Inter, Lato } from "next/font/google";
 import "../globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { I18nProviderClient } from "@/locales/client";
-
-const workSans = Work_Sans({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-work-sans",
-});
 
 const lato = Lato({
   subsets: ["latin"],

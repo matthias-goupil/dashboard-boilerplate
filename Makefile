@@ -4,6 +4,7 @@ ASK_CONFIRMATION := "read -p '\e[31mThis Makefile is meant to be used in a devel
     [ "\$$REPLY" = "y" ] \
     || exit 0; $(DOCKER_COMP_EXEC)"
 DOCKER_COMP := $(shell [ "${APP_ENV}" = "prod" ] && echo $(ASK_CONFIRMATION) || echo $(DOCKER_COMP_EXEC))
+NODE_ENV ?= development
 
 # Misc
 .DEFAULT_GOAL = help
@@ -20,19 +21,22 @@ help:
 ## —— Docker 🐳 ————————————————————————————————————————————————————————————————
 ##
 init: ## Builds the Docker images and start them in detach mode
-	@$(DOCKER_COMP) up --build -d 
+	@$(DOCKER_COMP) up app-dev --build -d 
 
 build: ## Builds the Docker images
-	@$(DOCKER_COMP) build 
+	@$(DOCKER_COMP) build app-dev
 
 up: ## Start the docker hub in detached mode (no logs)
-	@$(DOCKER_COMP) up -d
+	@$(DOCKER_COMP) up app-dev -d
 
 down: ## Stop the docker hub
 	@$(DOCKER_COMP) down
 
 logs: ## Show live logs
 	@$(DOCKER_COMP) logs --tail=0 --follow 
+
+prod: ## Run the app in production
+	@$(DOCKER_COMP) up app --build
 ##
 ## —— Drizzle ORM 💾 ————————————————————————————————————————————————————————————
 ##

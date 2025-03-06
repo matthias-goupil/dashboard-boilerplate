@@ -1,12 +1,8 @@
 import QueryTabs from "@/components/custom-ui/queryTabs";
 import UpdatePasswordForm from "@/components/forms/users/admin/updatePasswordForm";
 import DashboardLayout from "@/components/layouts/dashboardLayout";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getJWT } from "@/lib/jwt";
 import { getScopedI18n } from "@/locales/server";
-import { getUserById } from "@/services/users";
 import React from "react";
 
 interface ISettingsPageProps {
@@ -17,7 +13,6 @@ async function SettingsPage(props: ISettingsPageProps) {
   const { locale } = await props.params;
   const t = await getScopedI18n("settings");
   const tGlobal = await getScopedI18n("global");
-  const user = await getUserById((await getJWT())!);
 
   return (
     <DashboardLayout

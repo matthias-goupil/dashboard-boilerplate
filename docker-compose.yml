@@ -1,16 +1,41 @@
 version: '3.8'
 
 services:
-  next:
+  app:
     build:
       context: ./next-app
-      dockerfile: Dockerfile
-    container_name: next-app
+      target: runner # Utilisation du mode production
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      HOSTNAME: 0.0.0.0
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-mydatabase}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_ENDPOINT: http://minio:9000
+    restart: unless-stopped
+    depends_on:
+      - db
+      - minio
+    networks:
+      - app-network
+  
+  app-dev:
+    build:
+      context: ./next-app
+      target: dev # Utilisation du mode développement
     ports:
       - "3000:3000"
     volumes:
-      - ./next-app:/app
+      - ./next-app:/app # Montage du code source pour le hot reload
+      - /app/node_modules # Évite les conflits avec les modules locaux
     environment:
+      NODE_ENV: development
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@db:5432/${POSTGRES_DB:-mydatabase}
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
       GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI}
@@ -21,9 +46,11 @@ services:
       MINIO_ENDPOINT: http://minio:9000
     depends_on:
       - db
+      - minio
+    command: ["npm", "run", "dev"]
     networks:
       - app-network
-
+    
   db:
     image: postgres:15-alpine
     container_name: postgres-db

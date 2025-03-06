@@ -8,11 +8,7 @@ export const metadata: Metadata = {
   title: "Planning",
 };
 
-interface IPlanningPageProps {
-  params: Promise<{}>;
-}
-
-async function PlanningPage(props: IPlanningPageProps) {
+async function PlanningPage() {
   const t = await getScopedI18n("planning");
   const tGlobal = await getScopedI18n("global");
   return (
@@ -26,7 +22,7 @@ async function PlanningPage(props: IPlanningPageProps) {
         t("pageTitle"),
       ]}
     >
-      <Card className="p-5 h-screen">
+      <Card className="p-8">
       </Card>
     </DashboardLayout>
   );

@@ -1,11 +1,9 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-interface IHomePageProps {
-  params: Promise<{}>;
-}
 
-export default async function HomePage(props: IHomePageProps) {
+export default async function HomePage() {
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center gap-4 ">
       <div className="flex justify-center items-center gap-4">

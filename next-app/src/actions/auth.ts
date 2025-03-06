@@ -14,7 +14,7 @@ export const signin = actionClient
       return {
         success: "Successfully logged in",
       };
-    } catch (e) {
+    } catch {
       return { failure: "Incorrect credentials" };
     }
   });
@@ -27,7 +27,7 @@ export const signup = actionClient
       return {
         success: "Successfully sign up",
       };
-    } catch (e) {
+    } catch {
       return { failure: "User already exists" };
     }
   });

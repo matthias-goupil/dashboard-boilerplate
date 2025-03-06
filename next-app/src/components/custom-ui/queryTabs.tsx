@@ -1,13 +1,8 @@
 "use client";
 
 import React, {
-  CSSProperties,
   PropsWithChildren,
   ReactNode,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
 } from "react";
 import { useQueryState } from "nuqs";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";

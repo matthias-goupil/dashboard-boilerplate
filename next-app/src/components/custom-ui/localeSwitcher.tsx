@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -15,9 +16,8 @@ import {
   useCurrentLocale,
   useScopedI18n,
 } from "@/locales/client";
-interface ILocaleSwitcherProps {}
 
-export default function LocaleSwitcher({}: ILocaleSwitcherProps) {
+export default function LocaleSwitcher() {
   const t = useScopedI18n("locales");
   const currentLocale = useCurrentLocale();
   const changeLocale = useChangeLocale({
