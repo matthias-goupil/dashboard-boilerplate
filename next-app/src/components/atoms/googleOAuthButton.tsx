@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 function GoogleOAuthButton() {
   return (
-    <a
+    <Link
       href="/api/auth/google"
       className="flex gap-3 items-center justify-center border rounded-xl p-2 hover:bg-slate-50 text-sm"
     >
@@ -32,7 +33,7 @@ function GoogleOAuthButton() {
         ></path>
       </svg>
       Continuer avec google
-    </a>
+    </Link>
   );
 }
 
