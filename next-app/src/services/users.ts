@@ -33,7 +33,7 @@ export async function updateUserPassword(
         .update(users)
         .set({ hashedPassword })
         .where(eq(users.id, user.id))
-    ).length;
+    );
   } catch {
     throw new Error("Une erreur est survenue");
   }
