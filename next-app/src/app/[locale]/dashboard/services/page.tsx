@@ -1,6 +1,6 @@
-import DashboardLayout from "@/components/layouts/dashboardLayout";
-import { Card } from "@/components/ui/card";
-import { getScopedI18n } from "@/locales/server";
+import DashboardLayout from "@/components/templates/dashboardLayout";
+import { Card } from "@/components/atoms/card";
+import { getScopedI18n } from "@/utils/i18n/server";
 import React from "react";
 
 async function ServicesPage() {

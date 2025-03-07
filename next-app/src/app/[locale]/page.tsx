@@ -1,7 +1,6 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/atoms/button";
 import Link from "next/link";
-
 
 export default async function HomePage() {
   return (

@@ -1,11 +1,12 @@
 import { eq } from "drizzle-orm";
-import { db } from "@/db/db";
-import { users } from "@/db/schemas";
-import { checkPassword, hashPassword } from "@/lib/hash";
-import { accounts } from "@/db/schemas/accounts";
-import { generateJWT } from "@/lib/jwt";
+import { users } from "@/models";
+import { accounts } from "@/models";
 import { uploadImageByURL } from "./minio";
 import { v4 as uuidv4 } from "uuid";
+import { checkPassword, hashPassword } from "@/utils/hash";
+import { db } from "@/utils/db";
+import { generateJWT } from "@/utils/jwt";
+
 export async function signupWithCredentials(
   email: string,
   password: string,

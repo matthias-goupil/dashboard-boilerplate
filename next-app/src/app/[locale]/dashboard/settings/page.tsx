@@ -1,9 +1,15 @@
-import QueryTabs from "@/components/custom-ui/queryTabs";
-import UpdatePasswordForm from "@/components/forms/users/admin/updatePasswordForm";
-import DashboardLayout from "@/components/layouts/dashboardLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getScopedI18n } from "@/locales/server";
 import React from "react";
+
+import QueryTabs from "@/components/molecules/queryTabs";
+import UpdatePasswordForm from "@/components/organisms/forms/users/admin/updatePasswordForm";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/atoms/card";
+import { getScopedI18n } from "@/utils/i18n/server";
+import DashboardLayout from "@/components/templates/dashboardLayout";
 
 interface ISettingsPageProps {
   params: Promise<{ locale: string }>;
@@ -79,10 +85,12 @@ async function SettingsPage(props: ISettingsPageProps) {
             value: "subscription",
             component: (
               <Card className="p-4">
-              <CardTitle className="p-4">
-                <h3 className="font-bold text-[#2B3674] mb-8">Mon abonnement</h3>
-              </CardTitle>
-            </Card>
+                <CardTitle className="p-4">
+                  <h3 className="font-bold text-[#2B3674] mb-8">
+                    Mon abonnement
+                  </h3>
+                </CardTitle>
+              </Card>
             ),
           },
         ]}

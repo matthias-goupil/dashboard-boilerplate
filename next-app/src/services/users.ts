@@ -1,6 +1,6 @@
-import { db } from "@/db/db";
-import { users } from "@/db/schemas/users";
-import { checkPassword, hashPassword } from "@/lib/hash";
+import { users } from "@/models";
+import { db } from "@/utils/db";
+import { checkPassword, hashPassword } from "@/utils/hash";
 import { eq } from "drizzle-orm";
 
 export async function getUsers() {

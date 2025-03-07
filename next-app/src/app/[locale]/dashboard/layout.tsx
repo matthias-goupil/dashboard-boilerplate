@@ -1,4 +1,4 @@
-import { SidebarMenu } from "@/components/ui/menu";
+import { SidebarMenu } from "@/components/atoms/menu";
 import React, { PropsWithChildren } from "react";
 import {
   HomeIcon as HomeIconSolid,

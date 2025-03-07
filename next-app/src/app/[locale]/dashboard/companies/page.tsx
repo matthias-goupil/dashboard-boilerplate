@@ -1,5 +1,5 @@
-import DashboardLayout from "@/components/layouts/dashboardLayout";
-import { getScopedI18n } from "@/locales/server";
+import DashboardLayout from "@/components/templates/dashboardLayout";
+import { getScopedI18n } from "@/utils/i18n/server";
 import React from "react";
 
 async function CompanyPage() {

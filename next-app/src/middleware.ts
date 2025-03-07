@@ -1,7 +1,7 @@
 import { createI18nMiddleware } from "next-international/middleware";
 import { NextRequest, NextResponse } from "next/server";
-import { i18nMiddlewareConfig } from "./locales/config";
-import { getJWT } from "./lib/jwt";
+import { i18nMiddlewareConfig } from "./config/i18n.config";
+import { getJWT } from "./utils/jwt";
 
 const I18nMiddleware = createI18nMiddleware(i18nMiddlewareConfig);
 
