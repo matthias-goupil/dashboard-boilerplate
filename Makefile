@@ -41,16 +41,16 @@ prod: ## Run the app in production
 ## —— Drizzle ORM 💾 ————————————————————————————————————————————————————————————
 ##
 db-push: ## Apply changes to the database
-	@$(DOCKER_COMP) exec next npx drizzle-kit push
+	@$(DOCKER_COMP) exec app-dev npx drizzle-kit push --config=./src/config/drizzle.config.ts
 
 db-generate: ## Generate migrations
-	@$(DOCKER_COMP) exec next npx drizzle-kit generate
+	@$(DOCKER_COMP) exec app-dev npx drizzle-kit generate --config=./src/config/drizzle.config.ts
 	
 db-migrate: ## Apply migrations
-	@$(DOCKER_COMP) exec next npx drizzle-kit migrate
+	@$(DOCKER_COMP) exec app-dev npx drizzle-kit migrate --config=./src/config/drizzle.config.ts
 
 db-pull: ## Pull database
-	@$(DOCKER_COMP) exec next npx drizzle-kit db
+	@$(DOCKER_COMP) exec app-dev npx drizzle-kit db --config=./src/config/drizzle.config.ts
 
 ##
 ## ——————————————————————————— 📜 END OF HELP 📜 —————————————————————————————————
