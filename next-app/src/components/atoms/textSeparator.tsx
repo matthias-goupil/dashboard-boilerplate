@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 interface ITextSeperatorProps {
-  text: string;
+  text: string
 }
 function TextSeparator({ text }: ITextSeperatorProps) {
   return (
@@ -9,7 +9,7 @@ function TextSeparator({ text }: ITextSeperatorProps) {
       <div className="w-full h-[1px] bg-gray-300 absolute"></div>
       <p className="bg-white px-7 z-20">{text}</p>
     </div>
-  );
+  )
 }
 
-export default TextSeparator;
+export default TextSeparator

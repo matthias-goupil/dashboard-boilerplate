@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import React, { Suspense } from "react";
+import React, { Suspense } from 'react'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,24 +8,24 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../atoms/breadcrumb";
-import UserSettings from "../molecules/userDropdown";
-import Link from "next/link";
-import LocaleSwitcher from "../molecules/localeSwitcher";
-import { users } from "@/models";
-import { Skeleton } from "../atoms/skeleton";
+} from '../atoms/breadcrumb'
+import UserSettings from '../molecules/userDropdown'
+import Link from 'next/link'
+import LocaleSwitcher from '../molecules/localeSwitcher'
+import { users } from '@/models'
+import { Skeleton } from '../atoms/skeleton'
 
 interface IHeaderProps {
-  title: string;
+  title: string
   user: {
-    email: typeof users.$inferSelect.email;
-    name: typeof users.$inferSelect.name;
-    picture:  typeof users.$inferSelect.picture
-  };
-  breadcrumb?: ({ label: string; href?: string } | string)[];
+    email: typeof users.$inferSelect.email
+    name: typeof users.$inferSelect.name
+    picture: typeof users.$inferSelect.picture
+  }
+  breadcrumb?: ({ label: string; href?: string } | string)[]
 }
 
-function Header({ title, breadcrumb, user}: IHeaderProps) {
+function Header({ title, breadcrumb, user }: IHeaderProps) {
   return (
     <header className="flex items-center justify-between w-full mb-10 h-32 sticky top-0 backdrop-blur-xl ">
       <div className="space-y-1">
@@ -35,16 +35,16 @@ function Header({ title, breadcrumb, user}: IHeaderProps) {
               {breadcrumb
                 ?.reduce<({ label: string; href?: string } | string)[]>(
                   (acc, curr, index) =>
-                    index % 2 === 0 ? [...acc, curr] : [...acc, "/", curr],
+                    index % 2 === 0 ? [...acc, curr] : [...acc, '/', curr],
                   []
                 )
                 ?.map((element, index) => {
-                  return element === "/" ? (
+                  return element === '/' ? (
                     <BreadcrumbSeparator key={index} />
                   ) : (
                     <BreadcrumbItem key={index}>
                       <BreadcrumbPage>
-                        {typeof element === "string" ? (
+                        {typeof element === 'string' ? (
                           element
                         ) : element.href ? (
                           <BreadcrumbLink asChild>
@@ -55,7 +55,7 @@ function Header({ title, breadcrumb, user}: IHeaderProps) {
                         )}
                       </BreadcrumbPage>
                     </BreadcrumbItem>
-                  );
+                  )
                 })}
             </BreadcrumbList>
           </Breadcrumb>
@@ -66,12 +66,10 @@ function Header({ title, breadcrumb, user}: IHeaderProps) {
         <Suspense fallback={<Skeleton className="h-14 w-14 rounded-full" />}>
           <LocaleSwitcher />
         </Suspense>
-        <UserSettings
-          {...user}
-        />
+        <UserSettings {...user} />
       </div>
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header

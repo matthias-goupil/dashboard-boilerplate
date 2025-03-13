@@ -1,6 +1,6 @@
-"use client";
-import { createI18nClient } from "next-international/client";
-import { importedLocales } from "../../config/i18n.config";
+'use client'
+import { createI18nClient } from 'next-international/client'
+import { importedLocales } from '../../config/i18n.config'
 
 export const {
   useI18n,
@@ -8,4 +8,4 @@ export const {
   I18nProviderClient,
   useCurrentLocale,
   useChangeLocale,
-} = createI18nClient(importedLocales);
+} = createI18nClient(importedLocales)

@@ -1,46 +1,46 @@
-"use client";
+'use client'
 
-import React from "react";
+import React from 'react'
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
-import { Button } from "@/components/atoms/button";
-import { Form, FormMessage } from "@/components/atoms/form";
-import { redirect } from "next/navigation";
-import { toast } from "@/hooks/use-toast";
-import Field from "@/components/molecules/field";
-import { zodSignupSchema } from "@/utils/validations/auth";
-import { signup } from "@/utils/actions/auth";
+import { Button } from '@/components/atoms/button'
+import { Form, FormMessage } from '@/components/atoms/form'
+import { redirect } from 'next/navigation'
+import { toast } from '@/hooks/use-toast'
+import Field from '@/components/molecules/field'
+import { zodSignupSchema } from '@/utils/validations/auth'
+import { signup } from '@/utils/actions/auth'
 
 function SigninForm() {
   const form = useForm<z.infer<typeof zodSignupSchema>>({
     resolver: zodResolver(zodSignupSchema),
     defaultValues: {
-      email: "",
-      password: "",
-      name: "",
+      email: '',
+      password: '',
+      name: '',
     },
-  });
+  })
 
   async function onSubmit(values: z.infer<typeof zodSignupSchema>) {
-    const response = await signup(values);
+    const response = await signup(values)
     if (response?.data?.success) {
       toast({
-        title: "Inscription réussie",
-        description: "Veuillez vous connecter",
+        title: 'Inscription réussie',
+        description: 'Veuillez vous connecter',
         duration: 2000,
-      });
-      redirect("/auth/signin");
+      })
+      redirect('/auth/signin')
     } else if (response?.data?.failure) {
       toast({
-        variant: "destructive",
-        title: "Erreur de connexion",
+        variant: 'destructive',
+        title: 'Erreur de connexion',
         description: response.data.failure,
         duration: 2000,
-      });
-      form.setError("root", { message: response.data.failure });
+      })
+      form.setError('root', { message: response.data.failure })
     }
   }
 
@@ -82,10 +82,12 @@ function SigninForm() {
           <FormMessage>{form.formState.errors.root?.message}</FormMessage>
         )}
 
-        <Button variant="form" type="submit">S&apos;inscrire</Button>
+        <Button variant="form" type="submit">
+          S&apos;inscrire
+        </Button>
       </form>
     </Form>
-  );
+  )
 }
 
-export default SigninForm;
+export default SigninForm

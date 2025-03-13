@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   FormControl,
   FormDescription,
@@ -6,17 +6,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../atoms/form";
-import { Input } from "../atoms/input";
-import { UseFormReturn, FieldValues, Path } from "react-hook-form";
+} from '../atoms/form'
+import { Input } from '../atoms/input'
+import { UseFormReturn, FieldValues, Path } from 'react-hook-form'
 
 interface IFieldProps<T extends FieldValues>
-  extends Omit<React.ComponentProps<"input">, "form"> {
-  form: UseFormReturn<T>; 
-  name: Path<T>;
-  description?: string;
-  label?: string;
-  displayRequiredLabel?: boolean;
+  extends Omit<React.ComponentProps<'input'>, 'form'> {
+  form: UseFormReturn<T>
+  name: Path<T>
+  description?: string
+  label?: string
+  displayRequiredLabel?: boolean
 }
 
 function Field<T extends FieldValues>({
@@ -35,7 +35,7 @@ function Field<T extends FieldValues>({
         <FormItem className="w-full">
           {label && (
             <FormLabel>
-              {label}{" "}
+              {label}{' '}
               {inputProps.required && displayRequiredLabel && (
                 <span className="text-red-500">*</span>
               )}
@@ -49,7 +49,7 @@ function Field<T extends FieldValues>({
         </FormItem>
       )}
     />
-  );
+  )
 }
 
-export default Field;
+export default Field

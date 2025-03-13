@@ -1,5 +1,5 @@
-import React from "react";
-import { Skeleton } from "../../atoms/skeleton";
+import React from 'react'
+import { Skeleton } from '../../atoms/skeleton'
 
 function headerSkeleton() {
   return (
@@ -10,7 +10,7 @@ function headerSkeleton() {
       </div>
       <Skeleton className="h-14 w-14 rounded-full" />
     </header>
-  );
+  )
 }
 
-export default headerSkeleton;
+export default headerSkeleton

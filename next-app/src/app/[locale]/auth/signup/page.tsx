@@ -1,9 +1,14 @@
-"use client";
-import SignupForm from "@/components/organisms/forms/auth/signupForm";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/atoms/card";
-import GoogleOAuthButton from "@/components/atoms/googleOAuthButton";
-import TextSeparator from "@/components/atoms/textSeparator";
-import React from "react";
+'use client'
+import SignupForm from '@/components/organisms/forms/auth/signupForm'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/atoms/card'
+import GoogleOAuthButton from '@/components/atoms/googleOAuthButton'
+import TextSeparator from '@/components/atoms/textSeparator'
+import React from 'react'
 
 function SignupPage() {
   return (
@@ -21,7 +26,7 @@ function SignupPage() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }
 
-export default SignupPage;
+export default SignupPage

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link'
+import React from 'react'
 
 function GoogleOAuthButton() {
   return (
@@ -7,7 +7,7 @@ function GoogleOAuthButton() {
       href="/api/auth/google"
       className="flex gap-3 items-center justify-center border rounded-xl p-2 hover:bg-slate-50 text-sm"
     >
-      {" "}
+      {' '}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
@@ -34,7 +34,7 @@ function GoogleOAuthButton() {
       </svg>
       Continuer avec google
     </Link>
-  );
+  )
 }
 
-export default GoogleOAuthButton;
+export default GoogleOAuthButton

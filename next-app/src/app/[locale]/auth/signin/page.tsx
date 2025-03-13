@@ -1,8 +1,13 @@
-import SigninForm from "@/components/organisms/forms/auth/signinForm";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/atoms/card";
-import GoogleOAuthButton from "@/components/atoms/googleOAuthButton";
-import TextSeparator from "@/components/atoms/textSeparator";
-import React from "react";
+import SigninForm from '@/components/organisms/forms/auth/signinForm'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/atoms/card'
+import GoogleOAuthButton from '@/components/atoms/googleOAuthButton'
+import TextSeparator from '@/components/atoms/textSeparator'
+import React from 'react'
 
 function SigninPage() {
   return (
@@ -14,14 +19,13 @@ function SigninPage() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          
           <SigninForm />
-          <TextSeparator text="OU"/>
+          <TextSeparator text="OU" />
           <GoogleOAuthButton />
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }
 
-export default SigninPage;
+export default SigninPage

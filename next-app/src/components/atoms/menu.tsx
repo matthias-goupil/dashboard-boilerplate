@@ -1,47 +1,47 @@
-"use client";
+'use client'
 
-import { useScopedI18n } from "@/utils/i18n/client";
-import { cn } from "@/utils/utils";
-import { ChevronsLeftRight } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { ReactNode, useState, useMemo, CSSProperties } from "react";
+import { useScopedI18n } from '@/utils/i18n/client'
+import { cn } from '@/utils/utils'
+import { ChevronsLeftRight } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import React, { ReactNode, useState, useMemo, CSSProperties } from 'react'
 
 interface ISidebarMenuProps {
   menu: {
-    label: string;
-    href: string;
-    icon: ReactNode;
-    selectedIcon?: ReactNode;
-  }[];
+    label: string
+    href: string
+    icon: ReactNode
+    selectedIcon?: ReactNode
+  }[]
 }
 
 export function SidebarMenu({ menu }: ISidebarMenuProps) {
-  const [extended, setExtended] = useState(true);
-  const pathname = usePathname();
-  const t = useScopedI18n("menu");
+  const [extended, setExtended] = useState(true)
+  const pathname = usePathname()
+  const t = useScopedI18n('menu')
   const activeIndex = useMemo(
     () => menu.findIndex(({ href }) => pathname == href),
     [pathname, menu]
-  );
+  )
 
   const spanStyles: CSSProperties = useMemo(() => {
     if (activeIndex >= 0) {
       return {
-        height: "64px",
+        height: '64px',
         transform: `translateY(${activeIndex * (64 + 16)}px)`,
-      };
+      }
     }
     return {
       height: 0,
-    };
-  }, [activeIndex]);
+    }
+  }, [activeIndex])
 
   return (
     <div
       className={cn(
-        "relative h-screen transition-all bg-white border-r",
-        extended ? "w-72" : "w-24"
+        'relative h-screen transition-all bg-white border-r',
+        extended ? 'w-72' : 'w-24'
       )}
     >
       <ToggleButton onToggle={() => setExtended(!extended)} />
@@ -52,7 +52,7 @@ export function SidebarMenu({ menu }: ISidebarMenuProps) {
               Saas <span className="font-light">Inc</span>
             </>
           ) : (
-            "S"
+            'S'
           )}
         </p>
       </div>
@@ -63,21 +63,21 @@ export function SidebarMenu({ menu }: ISidebarMenuProps) {
         ></span>
         <ul className="flex flex-col items-start gap-4 px-4 w-full">
           {menu?.map(({ href, selectedIcon, icon, label }, index) => {
-            const selected = activeIndex === index;
+            const selected = activeIndex === index
             return (
               <li
                 key={index}
                 className={cn(
-                  "w-full font-medium text-lg text-[#A3AED0] relative",
-                  selected && "text-[#2B3674]",
-                  !extended && "w-fit"
+                  'w-full font-medium text-lg text-[#A3AED0] relative',
+                  selected && 'text-[#2B3674]',
+                  !extended && 'w-fit'
                 )}
               >
                 <Link
                   className={cn(
-                    "w-full flex items-center gap-3 p-4 rounded-xl transition-colors",
-                    extended ? "justify-start" : "justify-center",
-                    !selected && "hover:bg-slate-50"
+                    'w-full flex items-center gap-3 p-4 rounded-xl transition-colors',
+                    extended ? 'justify-start' : 'justify-center',
+                    !selected && 'hover:bg-slate-50'
                   )}
                   href={href}
                 >
@@ -88,23 +88,23 @@ export function SidebarMenu({ menu }: ISidebarMenuProps) {
                     <span className="overflow-hidden whitespace-nowrap">
                       {t(
                         label as
-                          | "settings"
-                          | "dashboard"
-                          | "company"
-                          | "services"
-                          | "planning"
-                          | "customers"
+                          | 'settings'
+                          | 'dashboard'
+                          | 'company'
+                          | 'services'
+                          | 'planning'
+                          | 'customers'
                       )}
                     </span>
                   )}
                 </Link>
               </li>
-            );
+            )
           })}
         </ul>
       </nav>
     </div>
-  );
+  )
 }
 
 function ToggleButton({ onToggle }: { onToggle: () => void }) {
@@ -115,5 +115,5 @@ function ToggleButton({ onToggle }: { onToggle: () => void }) {
     >
       <ChevronsLeftRight className="text-[#A3AED0]" />
     </button>
-  );
+  )
 }

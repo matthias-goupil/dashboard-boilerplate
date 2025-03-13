@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "@/components/atoms/button";
-import Link from "next/link";
+import React from 'react'
+import { Button } from '@/components/atoms/button'
+import Link from 'next/link'
 
 export default async function HomePage() {
   return (
@@ -17,5 +17,5 @@ export default async function HomePage() {
         </>
       </div>
     </div>
-  );
+  )
 }

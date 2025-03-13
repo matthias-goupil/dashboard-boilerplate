@@ -1,17 +1,17 @@
-import { users } from "@/models";
-import { db } from "@/utils/db";
-import { checkPassword, hashPassword } from "@/utils/hash";
-import { eq } from "drizzle-orm";
+import { users } from '@/models'
+import { db } from '@/utils/db'
+import { checkPassword, hashPassword } from '@/utils/hash'
+import { eq } from 'drizzle-orm'
 
 export async function getUsers() {
-  return await db.query.users.findMany();
+  return await db.query.users.findMany()
 }
 
 export async function getUserById(id: string) {
   const user = await db.query.users.findFirst({
     where: eq(users.id, id),
-  });
-  return user;
+  })
+  return user
 }
 
 export async function updateUserPassword(
@@ -23,18 +23,16 @@ export async function updateUserPassword(
     !user.hashedPassword ||
     !(await checkPassword(currentPassword, user.hashedPassword))
   ) {
-    throw new Error("The current password is incorrect");
+    throw new Error('The current password is incorrect')
   }
 
-  const hashedPassword = await hashPassword(newPassword);
+  const hashedPassword = await hashPassword(newPassword)
   try {
-    return (
-      await db
-        .update(users)
-        .set({ hashedPassword })
-        .where(eq(users.id, user.id))
-    );
+    return await db
+      .update(users)
+      .set({ hashedPassword })
+      .where(eq(users.id, user.id))
   } catch {
-    throw new Error("Une erreur est survenue");
+    throw new Error('Une erreur est survenue')
   }
 }

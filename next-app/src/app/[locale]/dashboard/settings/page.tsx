@@ -1,42 +1,42 @@
-import React from "react";
+import React from 'react'
 
-import QueryTabs from "@/components/molecules/queryTabs";
-import UpdatePasswordForm from "@/components/organisms/forms/users/admin/updatePasswordForm";
+import QueryTabs from '@/components/molecules/queryTabs'
+import UpdatePasswordForm from '@/components/organisms/forms/users/admin/updatePasswordForm'
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/components/atoms/card";
-import { getScopedI18n } from "@/utils/i18n/server";
-import DashboardLayout from "@/components/templates/dashboardLayout";
+} from '@/components/atoms/card'
+import { getScopedI18n } from '@/utils/i18n/server'
+import DashboardLayout from '@/components/templates/dashboardLayout'
 
 interface ISettingsPageProps {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>
 }
 
 async function SettingsPage(props: ISettingsPageProps) {
-  const { locale } = await props.params;
-  const t = await getScopedI18n("settings");
-  const tGlobal = await getScopedI18n("global");
+  const { locale } = await props.params
+  const t = await getScopedI18n('settings')
+  const tGlobal = await getScopedI18n('global')
 
   return (
     <DashboardLayout
-      title={t("pageTitle")}
+      title={t('pageTitle')}
       breadcrumb={[
         {
-          label: tGlobal("dashboard"),
+          label: tGlobal('dashboard'),
           href: `/${locale}/dashboard`,
         },
-        t("pageTitle"),
+        t('pageTitle'),
       ]}
     >
       <QueryTabs
         queryName="settingsTab"
         tabs={[
           {
-            label: t("tabs.settings"),
-            value: "general",
+            label: t('tabs.settings'),
+            value: 'general',
             component: (
               <Card className="p-4">
                 <CardTitle className="p-4">
@@ -46,8 +46,8 @@ async function SettingsPage(props: ISettingsPageProps) {
             ),
           },
           {
-            label: t("tabs.userInformations"),
-            value: "profil",
+            label: t('tabs.userInformations'),
+            value: 'profil',
             component: (
               <div className="p-4">
                 <h3 className="font-bold text-[#2B3674] mb-8">Mon profil</h3>
@@ -63,8 +63,8 @@ async function SettingsPage(props: ISettingsPageProps) {
             ),
           },
           {
-            label: t("tabs.password"),
-            value: "password",
+            label: t('tabs.password'),
+            value: 'password',
             component: (
               <Card className="p-4">
                 <CardHeader>
@@ -81,8 +81,8 @@ async function SettingsPage(props: ISettingsPageProps) {
             ),
           },
           {
-            label: t("tabs.subscription"),
-            value: "subscription",
+            label: t('tabs.subscription'),
+            value: 'subscription',
             component: (
               <Card className="p-4">
                 <CardTitle className="p-4">
@@ -97,7 +97,7 @@ async function SettingsPage(props: ISettingsPageProps) {
         defaultValue="general"
       ></QueryTabs>
     </DashboardLayout>
-  );
+  )
 }
 
-export default SettingsPage;
+export default SettingsPage

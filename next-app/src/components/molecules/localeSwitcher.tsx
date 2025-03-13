@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import React from "react";
+import React from 'react'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -8,18 +8,21 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../atoms/dropdown-menu";
-import { Button } from "../atoms/button";
-import "../../../node_modules/flag-icons/css/flag-icons.min.css";
-import { useChangeLocale, useCurrentLocale, useScopedI18n } from "@/utils/i18n/client";
-
+} from '../atoms/dropdown-menu'
+import { Button } from '../atoms/button'
+import '../../../node_modules/flag-icons/css/flag-icons.min.css'
+import {
+  useChangeLocale,
+  useCurrentLocale,
+  useScopedI18n,
+} from '@/utils/i18n/client'
 
 export default function LocaleSwitcher() {
-  const t = useScopedI18n("locales");
-  const currentLocale = useCurrentLocale();
+  const t = useScopedI18n('locales')
+  const currentLocale = useCurrentLocale()
   const changeLocale = useChangeLocale({
-    preserveSearchParams: true
-  });
+    preserveSearchParams: true,
+  })
 
   return (
     <DropdownMenu>
@@ -28,7 +31,7 @@ export default function LocaleSwitcher() {
           variant="outline"
           className="rounded-full border-none shadow-none"
         >
-          <span className={`fi fi-${currentLocale} fis`}></span>{" "}
+          <span className={`fi fi-${currentLocale} fis`}></span>{' '}
           {t(currentLocale)}
         </Button>
       </DropdownMenuTrigger>
@@ -36,7 +39,7 @@ export default function LocaleSwitcher() {
         <DropdownMenuLabel className="text-center">Languages</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {(
-          ["fr", "gb", "de", "it", "es"] as ("gb" | "fr" | "es" | "it" | "de")[]
+          ['fr', 'gb', 'de', 'it', 'es'] as ('gb' | 'fr' | 'es' | 'it' | 'de')[]
         ).map((locale) => {
           return (
             <DropdownMenuCheckboxItem
@@ -48,9 +51,9 @@ export default function LocaleSwitcher() {
               <span className={`fi fi-${locale} fis mr-2`}></span>
               {t(locale)}
             </DropdownMenuCheckboxItem>
-          );
+          )
         })}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

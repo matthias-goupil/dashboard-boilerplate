@@ -1,18 +1,18 @@
-import { siginWithOAuth } from "@/services/auth";
-import { NextResponse } from "next/server";
+import { siginWithOAuth } from '@/services/auth'
+import { NextResponse } from 'next/server'
 
-const CLIENT_ID = process.env.GOOGLE_CLIENT_ID!;
-const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!;
-const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI!;
-const TOKEN_URL = "https://oauth2.googleapis.com/token";
-const USER_INFO_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
+const CLIENT_ID = process.env.GOOGLE_CLIENT_ID!
+const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!
+const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI!
+const TOKEN_URL = 'https://oauth2.googleapis.com/token'
+const USER_INFO_URL = 'https://www.googleapis.com/oauth2/v2/userinfo'
 
 export async function GET(req: Request) {
-  const url = new URL(req.url);
-  const code = url.searchParams.get("code");
+  const url = new URL(req.url)
+  const code = url.searchParams.get('code')
 
   if (!code) {
-    return NextResponse.json({ error: "No code provided" }, { status: 400 });
+    return NextResponse.json({ error: 'No code provided' }, { status: 400 })
   }
 
   try {
@@ -21,58 +21,58 @@ export async function GET(req: Request) {
       client_id: CLIENT_ID,
       client_secret: CLIENT_SECRET,
       redirect_uri: REDIRECT_URI,
-      grant_type: "authorization_code",
+      grant_type: 'authorization_code',
       code,
-    });
+    })
 
     const tokenResponse = await fetch(TOKEN_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: tokenParams.toString(),
-    });
+    })
 
-    const tokenData = await tokenResponse.json();
+    const tokenData = await tokenResponse.json()
 
     if (!tokenData.access_token) {
       return NextResponse.json(
-        { error: "Failed to get access token" },
+        { error: 'Failed to get access token' },
         { status: 400 }
-      );
+      )
     }
 
     // Récupère les infos de l'utilisateur
     const userResponse = await fetch(USER_INFO_URL, {
       headers: { Authorization: `Bearer ${tokenData.access_token}` },
-    });
+    })
 
-    const userData = await userResponse.json();
+    const userData = await userResponse.json()
 
     const data = await siginWithOAuth(
-      "google",
+      'google',
       userData.id,
       userData.email,
       userData.name,
       userData.picture
-    );
+    )
 
     if (data) {
-      const response = NextResponse.redirect("http://localhost:3000/dashboard");
+      const response = NextResponse.redirect('http://localhost:3000/dashboard')
 
-      response.cookies.set("jwt", data.token, {
+      response.cookies.set('jwt', data.token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/",
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/',
         maxAge: 60 * 60 * 24 * 7, // 7 jours
-      });
-      return response;
+      })
+      return response
     }
-    throw new Error();
+    throw new Error()
   } catch (error) {
     console.log(error)
     return NextResponse.json(
-      { error: "Authentication failed" },
+      { error: 'Authentication failed' },
       { status: 500 }
-    );
+    )
   }
 }
